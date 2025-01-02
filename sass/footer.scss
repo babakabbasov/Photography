@@ -1,0 +1,15 @@
+// _footer.scss
+
+@import "variables";
+@import "mixins";
+
+footer {
+  background: $secondary-color;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+
+  p {
+    font-size: 0.9rem;
+  }
+}

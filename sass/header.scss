@@ -1,0 +1,45 @@
+// header.scss
+
+@import "variables";
+@import "mixins";
+
+.header {
+  @include flex-center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: $primary-color;
+  color: white;
+  font-size: 2rem;
+  .nav-left,
+  .nav-right {
+    display: flex;
+    gap: 3rem;
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0 3rem;
+  }
+
+  @include respond(mobile) {
+    flex-direction: column;
+
+    .nav-left,
+    .nav-right {
+      margin: 0.5rem 0;
+    }
+  }
+}

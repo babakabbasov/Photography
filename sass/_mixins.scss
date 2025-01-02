@@ -1,0 +1,21 @@
+// _mixins.scss
+
+// Centering elements
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Responsive design
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+}

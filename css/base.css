@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set 1rem = 10px */
+html {
+  font-size: 62.5%; /* 16px * 62.5% = 10px */
+}
+html body {
+  font-family: "Arial, sans-serif";
+  color: #333;
+  line-height: 1.6;
+}
+html body a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=base.css.map */
