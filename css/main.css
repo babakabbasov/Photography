@@ -1,23 +1,76 @@
 .main {
-  height: 100vh;
-  background: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.main .slider {
-  background: url("background.jpg") no-repeat center center/cover;
-  height: 100vh; /* 100% of the viewport height */
   display: flex;
   flex-direction: column;
+  gap: 8rem;
+  display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  color: white;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  font-size: 1.8rem;
+  width: 100%;
 }
-.main p {
+.main .about {
+  display: flex;
+  justify-content: center; /* Horizontal alignment */
+  width: 100%;
+}
+.main .about div {
+  display: flex;
+  position: relative;
+  height: 27.5rem;
+  max-width: 40rem;
+  padding: 2rem;
+  width: 100%;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+}
+.main .about div.name {
+  flex-direction: column;
+}
+.main .about div p {
+  color: #333;
+  text-align: center;
+}
+.main .about div p.fullname {
+  font-family: "RightmanSignature", Arial, sans-serif;
+  font-size: 7rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.main .about div p.job {
+  text-transform: uppercase;
   font-size: 1.5rem;
+}
+.main .about div p.slogan {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+.main .about div:not(:last-child) {
+  border-right: 1px solid #000;
+}
+.main .section-services {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 133rem;
+}
+.main .section-services .title {
+  display: flex;
+}
+.main .section-services .title p:first-child {
+  flex: 1;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.main .section-services .title p:first-child span {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  text-transform: initial;
+}
+.main .section-services .title p:nth-child(2) {
+  flex: 1;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -4,21 +4,80 @@
 @import "mixins";
 
 .main {
-  height: 100vh;
-  background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
   @include flex-center;
-  .slider {
-    background: url("background.jpg") no-repeat center center/cover;
-    height: 100vh; /* 100% of the viewport height */
+  font-size: 1.8rem;
+  width: 100%;
+  // div:not(:first-child) {
+  //   max-width: 1330px;
+  // }
+  .about {
+    display: flex;
+    justify-content: center; /* Horizontal alignment */
+    width: 100%;
+
+    div {
+      display: flex;
+      position: relative;
+      height: 27.5rem;
+      max-width: 40rem;
+      padding: 2rem;
+      width: 100%;
+      align-items: center; /* Center horizontally */
+      justify-content: center; /* Center vertically */
+      &.name {
+        flex-direction: column;
+      }
+
+      p {
+        color: #333;
+        text-align: center;
+        &.fullname {
+          font-family: "RightmanSignature", Arial, sans-serif;
+          font-size: 7rem;
+          font-weight: 400;
+          line-height: 1;
+        }
+        &.job {
+          text-transform: uppercase;
+          font-size: 1.5rem;
+        }
+        &.slogan {
+          font-size: 2.5rem;
+          font-weight: 500;
+        }
+      }
+    }
+    div:not(:last-child) {
+      border-right: 1px solid #000;
+    }
+  }
+
+  .section-services {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  }
-  p {
-    font-size: 1.5rem;
+    gap: 2rem;
+    width: 100%;
+    max-width: 133rem;
+    .title {
+      display: flex;
+      p:first-child {
+        flex: 1;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        span {
+          display: block;
+          font-family: "Playfair Display", serif;
+          font-style: italic;
+          text-transform: initial;
+        }
+      }
+      p:nth-child(2) {
+        flex: 1;
+      }
+    }
   }
 }

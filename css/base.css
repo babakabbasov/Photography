@@ -9,9 +9,10 @@ html {
   font-size: 62.5%; /* 16px * 62.5% = 10px */
 }
 html body {
-  font-family: "Arial, sans-serif";
+  font-family: "Montserrat, sans-serif";
   color: #333;
   line-height: 1.6;
+  height: 2000px;
 }
 html body a {
   text-decoration: none;
@@ -19,8 +20,9 @@ html body a {
 }
 
 .container {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
 }
 

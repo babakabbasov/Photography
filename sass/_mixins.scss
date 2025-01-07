@@ -7,6 +7,26 @@
   align-items: center;
 }
 
+@mixin horizontal-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin vertical-center {
+  display: flex;
+  justify-content: center;
+}
+
+// Define a mixin for Montserrat font
+@mixin montserrat-font($uniquifier, $weight) {
+  .montserrat-#{$uniquifier} {
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: $weight;
+    font-style: normal;
+  }
+}
+
 // Responsive design
 @mixin respond($breakpoint) {
   @if $breakpoint == mobile {
