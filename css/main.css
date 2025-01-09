@@ -8,6 +8,9 @@
   font-size: 1.8rem;
   width: 100%;
 }
+.main .row {
+  margin-top: 10rem;
+}
 .main .about {
   display: flex;
   justify-content: center; /* Horizontal alignment */
@@ -57,20 +60,86 @@
 .main .section-services .title {
   display: flex;
 }
-.main .section-services .title p:first-child {
+.main .section-services .title .left {
   flex: 1;
   font-size: 2.5rem;
   text-transform: uppercase;
   font-weight: 600;
 }
-.main .section-services .title p:first-child span {
+.main .section-services .title .left span {
   display: block;
   font-family: "Playfair Display", serif;
   font-style: italic;
   text-transform: initial;
 }
-.main .section-services .title p:nth-child(2) {
+.main .section-services .title .right {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.main .section-services .title .right .up {
+  text-transform: initial;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.main .section-services .title .right .down .nav-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  gap: 1.2rem;
+}
+.main .section-services .title .right .down .nav-container .nav {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+.main .section-services .title .right .down .nav-container .nav div {
+  width: 3rem;
+  height: 4.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s linear;
+  background-size: contain; /* Scale SVG to cover the container */
+  background-repeat: no-repeat; /* Prevent tiling */
+  background-position: center; /* Center the SVG */
+}
+.main .section-services .title .right .down .nav-container .nav .left-arrow {
+  background-image: url("../img/nav/left-arrow.svg");
+}
+.main .section-services .title .right .down .nav-container .nav .right-arrow {
+  background-image: url("../img/nav/right-arrow.svg");
+}
+.main .section-services .title .right .down .nav-container .circle {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  display: inline-block;
+  border: 1px dashed #3c3c3c;
+  transform-origin: center; /* Rotate around the center of the circle */
+  z-index: 1;
+}
+.main .section-services .title .right .down .nav-container .circle:hover + .left-arrow {
+  background-image: url("../img/nav/left-arrow-hover.svg");
+}
+.main .section-services .title .right .down .nav-container .circle:hover + .right-arrow {
+  background-image: url("../img/nav/right-arrow-hover.svg");
+}
+.main .section-services .title .right .down .nav-container .circle:hover {
+  animation: rotateCircle 6s linear infinite;
+  border-color: #b90808;
+}
+@keyframes rotateCircle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

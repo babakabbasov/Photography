@@ -13,11 +13,15 @@
   // div:not(:first-child) {
   //   max-width: 1330px;
   // }
+  .row {
+    margin-top: 10rem;
+  }
+
   .about {
     display: flex;
     justify-content: center; /* Horizontal alignment */
     width: 100%;
-
+    // margin: 20rem 0;
     div {
       display: flex;
       position: relative;
@@ -63,7 +67,7 @@
     max-width: 133rem;
     .title {
       display: flex;
-      p:first-child {
+      .left {
         flex: 1;
         font-size: 2.5rem;
         text-transform: uppercase;
@@ -75,8 +79,78 @@
           text-transform: initial;
         }
       }
-      p:nth-child(2) {
+      .right {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        .up {
+          text-transform: initial;
+          font-size: 2rem;
+          font-weight: 400;
+        }
+        .down {
+          .nav-container {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 2rem;
+            gap: 1.2rem;
+            .nav {
+              display: inline-flex;
+              align-items: center;
+              cursor: pointer;
+              position: relative;
+              z-index: 5;
+              div {
+                width: 3rem;
+                height: 4.5rem;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                transition: 0.3s linear;
+                background-size: contain; /* Scale SVG to cover the container */
+                background-repeat: no-repeat; /* Prevent tiling */
+                background-position: center; /* Center the SVG */
+              }
+
+              .left-arrow {
+                background-image: url("../img/nav/left-arrow.svg");
+              }
+              .right-arrow {
+                background-image: url("../img/nav/right-arrow.svg");
+              }
+            }
+            .circle {
+              position: relative;
+              width: 5rem;
+              height: 5rem;
+              border-radius: 100%;
+              display: inline-block;
+              border: 1px dashed #3c3c3c;
+              transform-origin: center; /* Rotate around the center of the circle */
+              z-index: 1;
+            }
+            .circle:hover + .left-arrow {
+              background-image: url("../img/nav/left-arrow-hover.svg");
+            }
+
+            .circle:hover + .right-arrow {
+              background-image: url("../img/nav/right-arrow-hover.svg");
+            }
+            .circle:hover {
+              animation: rotateCircle 6s linear infinite;
+              border-color: #b90808;
+            }
+            @keyframes rotateCircle {
+              from {
+                transform: rotate(0deg);
+              }
+              to {
+                transform: rotate(360deg);
+              }
+            }
+          }
+        }
       }
     }
   }
