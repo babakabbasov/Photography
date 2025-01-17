@@ -4,11 +4,11 @@
   justify-content: center;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  padding: 1rem 0;
-  color: #ffffff;
+  z-index: 20;
+  padding: 2rem 0;
+  color: #000;
   font-size: 2rem;
-  background-color: rgba(252, 252, 252, 0);
+  background-color: rgba(244, 244, 244, 0.5);
   width: 100%;
 }
 .header .montserrat-weight-300 {
@@ -24,13 +24,14 @@
   font-style: normal;
 }
 .header.scrolled {
-  background-color: #ffffff;
+  background-color: rgba(240, 240, 240, 0.5);
   color: #000;
 }
 .header .nav-left,
 .header .nav-right {
   display: flex;
   gap: 3rem;
+  z-index: 700;
 }
 .header .nav-left a,
 .header .nav-right a {
@@ -43,6 +44,7 @@
   width: 170px;
   height: 62px;
   margin: 0 3rem;
+  z-index: 600;
 }
 .header .logo img {
   width: 100%;

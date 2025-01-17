@@ -1,209 +1,170 @@
 // Wait until the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
-  let currentIndex = 0;
-  const slides = document.querySelectorAll(".slide");
-  const totalSlides = slides.length;
-  const dots = document.querySelectorAll(".dots span");
-  const slider = document.querySelector(".slides");
+  let currentSlide = 0;
+  let sliderTextStatus = true;
+  const fst_text = document.querySelector(".fst-text");
+  const snd_text = document.querySelector(".snd-text");
+  const trd_text = document.querySelector(".trd-text");
+  const dots_container = document.querySelector(".dots");
+  function triggerSlideText(time) {
+    let sliderTextOpacity = 1;
+    let sliderTextTranslateX = "translateX(0)";
+    if (!sliderTextStatus) {
+      sliderTextOpacity = 0;
+      sliderTextTranslateX = "translateX(200px)";
+    }
+    sliderTextStatus = !sliderTextStatus;
+    setTimeout(() => {
+      fst_text.style.opacity = sliderTextOpacity;
+      fst_text.style.transform = sliderTextTranslateX;
+      snd_text.style.opacity = sliderTextOpacity;
+      snd_text.style.transform = sliderTextTranslateX;
+      trd_text.style.opacity = sliderTextOpacity;
+      trd_text.style.transform = sliderTextTranslateX;
+    }, time); // Delay for smooth transition
+  }
 
-  // Change Slide
+  const updateSlideNumber = () => {
+    dots_container.style.setProperty(
+      "--slide-number",
+      `"0${currentSlide + 1}"`
+    );
+  };
+
   function changeSlide(direction) {
-    currentIndex += direction;
+    const slides = document.querySelectorAll(".slide");
 
-    if (currentIndex < 0) {
-      currentIndex = totalSlides - 1;
-    } else if (currentIndex >= totalSlides) {
-      currentIndex = 0;
-    }
+    const dots = document.querySelectorAll(".dots span");
 
-    updateSlider();
+    slides[currentSlide].classList.remove("active");
+    dots[currentSlide].classList.remove("active");
+
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+
+    slides[currentSlide].classList.add("active");
+    dots[currentSlide].classList.add("active");
+    triggerSlideText(200);
+    triggerSlideText(3500);
+
+    updateSlideNumber();
   }
-
-  // Go to Specific Slide
-  function goToSlide(index) {
-    currentIndex = index;
-    updateSlider();
-  }
-
-  // Update Slider View
-  function updateSlider() {
-    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-    // Update Active Dot
-    dots.forEach((dot, index) => {
-      dot.classList.toggle("active", index === currentIndex);
-    });
-  }
-
-  // Auto Slide
-  setInterval(() => changeSlide(1), 5000);
-
-  // Initialize Slider
-  updateSlider();
-
-  // Expose functions globally for buttons to work
-  window.changeSlide = changeSlide;
-  window.goToSlide = goToSlide;
-
-  const header = document.querySelector(".header");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  });
-
-  let serviceIndex = 0;
-  const serviceContainer = document.querySelector(".services");
-  const track = document.querySelector(".service-track");
-  const services = document.querySelectorAll(".service-cover");
-  const totalServices = services.length;
-  let offset = 0;
-
-  // Configuration
-  let servicesPerView = 4;
-  let serviceCoverWidth = 330;
-  let serviceContainerWidth = serviceContainer.clientWidth;
-  // Minimum and Maximum Width Constraints
-  const minServiceWidth = 330;
-
-  // Adjust `servicesPerView` dynamically based on container width
-  function adjustServicesPerView() {
-    serviceContainerWidth = serviceContainer.clientWidth;
-    servicesPerView = Math.floor(serviceContainerWidth / minServiceWidth);
-    servicesPerView = Math.max(1, servicesPerView); // Ensure at least one service is visible
-  }
-
-  // Function to Calculate and Set Service Widths
-  function setServiceWidths() {
-    adjustServicesPerView();
-    serviceCoverWidth = serviceContainerWidth / servicesPerView; // Calculated width
-    // Apply width and margin-right to services
-    services.forEach((service, index) => {
-      service.style.width = `${serviceCoverWidth}px`;
-    });
-
-    updateServices();
-  }
-
-  // Function to Change Services
-  function changeService(direction) {
-    serviceIndex += direction;
-
-    if (serviceIndex < 0) {
-      serviceIndex = totalServices - servicesPerView;
-    } else if (serviceIndex > totalServices - servicesPerView) {
-      serviceIndex = 0;
-    }
-
-    updateServices();
-  }
-
-  // Function to Update the Track Position
-  function updateServices() {
-    const serviceCoverWidth = services[0].clientWidth;
-    const borderWidth =
-      parseFloat(getComputedStyle(services[0]).borderLeftWidth) * 2 || 0;
-    offset = -serviceIndex * (serviceCoverWidth + borderWidth);
-    track.style.transform = `translateX(${offset}px)`;
-  }
-
-  // Event Listeners for Navigation Buttons
-
-  document.getElementById("next-service").addEventListener("click", () => {
-    changeService(1);
-  });
-
-  document.getElementById("prev-service").addEventListener("click", () => {
-    changeService(-1);
-  });
-
-  // Debounce function to optimize resize event
-  function debounce(func, delay) {
-    let timer;
-    return function () {
-      clearTimeout(timer);
-      timer = setTimeout(func, delay);
-    };
-  }
-
-  // Auto-Slide (Optional)
+  triggerSlideText(200);
+  triggerSlideText(3500);
   setInterval(() => {
-    if (!keepMoving) return;
-    changeService(1);
-  }, 4000);
+    changeSlide(1);
+    //slideText.style.opacity = 1;
+    //slideText.style.transform = "translateX(0)";
+  }, 5000);
 
-  // Adjust on Window Resize (with debounce for performance)
-  window.addEventListener(
-    "resize",
-    debounce(() => {
-      adjustServicesPerView();
-      setServiceWidths();
-    }, 200)
-  );
+  function goToSlide(index) {
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dots span");
+    slides[currentSlide].classList.remove("active");
+    dots[currentSlide].classList.remove("active");
 
-  adjustServicesPerView();
-  setServiceWidths();
+    currentSlide = index;
 
-  // Dragging Logic
-  let isDragging = false;
-  let startX = 0;
-  let hasDragged = false;
-  let deltaX = 0;
-  let keepMoving = true;
-
-  // Mouse Down
-  track.addEventListener("mousedown", (e) => {
-    if (e.target.tagName === "A") {
-      e.preventDefault(); // Prevent default link behavior
+    slides[currentSlide].classList.add("active");
+    dots[currentSlide].classList.add("active");
+  }
+  /*
+  function updateSlideTextCSS(activeIndex) {
+    opacity: 1;
+    transform:;
+    // Apply new styles based on the active slide
+    switch (activeIndex) {
+      case 0:
+        slideText.style.opacity = 1;
+        slideText.style.transform = "translateX(0)";
+        break;
     }
-    isDragging = true;
-    hasDragged = false; // Reset flag
-    startX = e.clientX;
-    track.style.transition = "none";
-    document.body.style.userSelect = "none"; // Prevent text selection
-  });
+  }
 
-  track.addEventListener("mouseover", () => {
-    keepMoving = false;
-  });
-  track.addEventListener("mouseout", () => {
-    keepMoving = true;
-  });
+  function setActiveSlide(newIndex) {
+    slides.forEach((slide, index) => {
+      slide.classList.toggle("active", index === newIndex);
+    });
+    updateSlideTextCSS(newIndex);
+  }
 
-  // Mouse Move
-  track.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
-    deltaX = e.clientX - startX;
-    if (Math.abs(deltaX) > 5) {
-      hasDragged = true; // Significant movement detected
-    }
-    track.style.transform = `translateX(${offset + deltaX}px)`;
-  });
+  let currentIndex1 = 0;
+  */
+  /*
+  // Add click events for dots (if you have them)
+  const dots = document.querySelectorAll(".dots span");
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      currentIndex1 = index;
+      setActiveSlide(currentIndex1);
 
-  // Mouse Up
-  track.addEventListener("mouseup", (e) => {
-    if (!isDragging) return;
-    isDragging = false;
-    track.style.transition = "transform 0.3s ease-in-out";
-    document.body.style.userSelect = ""; // Restore text selection
-    const direction = Math.round(deltaX / -serviceCoverWidth);
-    changeService(direction);
+      dots.forEach((dot) => dot.classList.remove("active"));
+      dot.classList.add("active");
+    });
   });
+*/
+  // Optional: Auto-slide logic
+  /*setInterval(() => {
+    currentIndex1 = (currentIndex1 + 1) % slides.length;
+    setActiveSlide(currentIndex1);
 
-  // Click Event on `<a>` Tags
-  track.addEventListener("click", (e) => {
-    if (hasDragged && e.target.tagName === "A") {
-      e.preventDefault(); // Prevent click after drag
-      e.stopPropagation();
-    }
-  });
+    dots.forEach((dot) => dot.classList.remove("active"));
+    dots[currentIndex1].classList.add("active");
+  }, 5000); // Change slide every 5 seconds*/
 
-  track.addEventListener("mouseleave", () => {
-    track.style.transition = "transform 0.3s ease-in-out";
-    document.body.style.userSelect = "";
-    updateServices();
-  });
+  // Initialize the first dot as active
+  document.querySelectorAll(".dots span")[0].classList.add("active");
+  // let currentIndex = 0;
+  // const slides = document.querySelectorAll(".slide");
+  // const totalSlides = slides.length;
+  // const dots = document.querySelectorAll(".dots span");
+  // const slider = document.querySelector(".slides");
+
+  // // Change Slide
+  // function changeSlide(direction) {
+  //   currentIndex += direction;
+
+  //   if (currentIndex < 0) {
+  //     currentIndex = totalSlides - 1;
+  //   } else if (currentIndex >= totalSlides) {
+  //     currentIndex = 0;
+  //   }
+
+  //   updateSlider();
+  // }
+
+  // // Go to Specific Slide
+  // function goToSlide(index) {
+  //   currentIndex = index;
+  //   updateSlider();
+  // }
+
+  // // Update Slider View
+  // function updateSlider() {
+  //   slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+  //   // Update Active Dot
+  //   dots.forEach((dot, index) => {
+  //     dot.classList.toggle("active", index === currentIndex);
+  //   });
+  // }
+
+  // // Auto Slide
+  // setInterval(() => changeSlide(1), 5000);
+
+  // // Initialize Slider
+  // updateSlider();
+
+  // // Expose functions globally for buttons to work
+  // window.changeSlide = changeSlide;
+  // window.goToSlide = goToSlide;
+
+  // const header = document.querySelector(".header");
+
+  // window.addEventListener("scroll", () => {
+  //   if (window.scrollY > 50) {
+  //     header.classList.add("scrolled");
+  //   } else {
+  //     header.classList.remove("scrolled");
+  //   }
+  // });
 });

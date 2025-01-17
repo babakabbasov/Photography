@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/slider.css" />
+    <link rel="stylesheet" href="css/sliderV2.css" />
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/services.css" />
 
@@ -35,67 +35,95 @@
         </div>
       </div>
       <div class="main">
+        <div class="left-layer">
+          <img src="./img/slider/light-top.png" alt="" />
+        </div>
         <div class="slider">
-          <div class="slides">
-            <div
-              class="slide"
-              style="background-image: url('img/slider/slide1.jpg')"
-            ></div>
-            <div
-              class="slide"
-              style="background-image: url('img/slider/slide2.jpg')"
-            ></div>
-            <div
-              class="slide"
-              style="background-image: url('img/slider/slide3.jpg')"
-            ></div>
-            <div
-              class="slide"
-              style="background-image: url('img/slider/slide4.jpg')"
-            ></div>
-            <div
-              class="slide"
-              style="background-image: url('img/slider/slide5.jpg')"
-            ></div>
-            <div
-              class="slide"
-              style="background-image: url('img/slider/slide6.jpg')"
-            ></div>
+          <div class="bottom-layer">
+            <img src="./img/slider/light-bottom.png" alt="" />
+          </div>
+          <div class="slide-left">
+            <div class="left-menu">
+              <div class="studio-name">Zuleykha Guliyeva</div>
+              <div class="hamburger-icon" onclick="toggleHamburger()">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <!-- Indicator Dots -->
+              <div class="dots">
+                <span class="active" onclick="goToSlide(0)"></span>
+                <span onclick="goToSlide(1)"></span>
+                <span onclick="goToSlide(2)"></span>
+                <span onclick="goToSlide(3)"></span>
+              </div>
+            </div>
+            <div class="slide-text">
+              <div class="fst-text">desert</div>
+              <div class="snd-text">lonliness</div>
+              <div class="trd-text">folio</div>
+            </div>
+          </div>
+          <div class="slide-middle">
+            <div class="slides">
+              <div
+                class="slide active"
+                style="background-image: url('img/slider/slider1-01a.webp')"
+              ></div>
+              <div
+                class="slide"
+                style="background-image: url('img/slider/slider1-02.webp')"
+              ></div>
+              <div
+                class="slide"
+                style="background-image: url('img/slider/slider1-03.webp')"
+              ></div>
+              <div
+                class="slide"
+                style="background-image: url('img/slider/slider1-04.webp')"
+              ></div>
+            </div>
+            <div class="free-space"></div>
+          </div>
+
+          <div class="social-networks">
+            <a href="#" class="facebook"></a>
+            <a href="#" class="instagram"></a>
+            <a href="#" class="youtube"></a>
+            <a href="#" class="tiktok"></a>
           </div>
 
           <!-- Navigation Arrows -->
-          <button class="nav-btn prev" onclick="changeSlide(-1)">
+          <!-- <button class="nav-btn prev" onclick="changeSlide(-1)">
             &#10094;
           </button>
           <button class="nav-btn next" onclick="changeSlide(1)">
             &#10095;
-          </button>
-
-          <!-- Indicator Dots -->
-          <div class="dots">
-            <span onclick="goToSlide(0)"></span>
-            <span onclick="goToSlide(1)"></span>
-            <span onclick="goToSlide(2)"></span>
-            <span onclick="goToSlide(3)"></span>
-            <span onclick="goToSlide(4)"></span>
-            <span onclick="goToSlide(5)"></span>
-          </div>
+          </button> -->
         </div>
         <div class="about row">
-          <div>
-            <p class="slogan">Creating memories that last a lifetime</p>
+          <div class="title">
+            <div class="left">Your Devoted <span>Photographer</span></div>
+            <!-- <div class="right">
+              Preserving your love for every moment of life as a beautiful story
+            </div> -->
           </div>
-          <div class="name">
-            <p class="fullname">Zuleykha Guliyeva</p>
-            <p class="job">Editorial Photography & Video Production</p>
-          </div>
-          <div class="biography">
-            <p>
-              We believe that photography is not just a profession, but a form
-              of art that requires dedication, skill, and creativity. Our
-              passion for photography is reflected in our work, and we strive to
-              deliver exceptional results.
-            </p>
+          <div class="content">
+            <div>
+              <p class="slogan">Creating memories that last a lifetime</p>
+            </div>
+            <div class="name">
+              <p class="fullname">Zuleykha Guliyeva</p>
+              <p class="job">Editorial Photography & Video Production</p>
+            </div>
+            <div class="biography">
+              <p>
+                We believe that photography is not just a profession, but a form
+                of art that requires dedication, skill, and creativity. Our
+                passion for photography is reflected in our work, and we strive
+                to deliver exceptional results.
+              </p>
+            </div>
           </div>
         </div>
         <div class="section-services row">

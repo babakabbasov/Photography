@@ -7,27 +7,31 @@
   position: fixed;
   @include flex-center;
   justify-content: center;
-  z-index: 1000;
-  padding: 1rem 0;
-  color: #ffffff;
+  z-index: 20;
+  padding: 2rem 0;
+  color: #000;
   font-size: 2rem;
-  background-color: rgba($color: #fcfcfc, $alpha: 0);
+  background-color: rgba(244, 244, 244, 0.5);
+  // background-color: rgba($color: #fcfcfc, $alpha: 0);
   width: 100%;
+  //height: 100%;
   // Generate Montserrat classes for different font weights
   // $font-weights: (100, 200, 300, 400, 500, 600, 700, 800, 900);
   // @each $weight in $font-weights {
   //   @include montserrat-font(weight-#{$weight}, $weight);
   // }
+
   @include montserrat-font(weight-300, 300);
   @include montserrat-font(weight-600, 600);
   &.scrolled {
-    background-color: #ffffff;
+    background-color: rgba(240, 240, 240, 0.5);
     color: #000;
   }
   .nav-left,
   .nav-right {
     display: flex;
     gap: 3rem;
+    z-index: 700;
     a {
       text-decoration: none;
       text-transform: uppercase;
@@ -43,6 +47,7 @@
     width: 170px;
     height: 62px;
     margin: 0 3rem;
+    z-index: 600;
     img {
       width: 100%;
     }

@@ -114,33 +114,33 @@
     }
   }
 
-  /* Navigation Buttons */
-  .nav-btn {
-    position: absolute;
-    top: 45%;
-    transform: translateY(-45%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    font-size: 2rem;
-    border: none;
-    cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 5px;
-    z-index: 10;
-    transition: background 0.3s ease-in-out;
+  //   /* Navigation Buttons */
+  //   .nav-btn {
+  //     position: absolute;
+  //     top: 45%;
+  //     transform: translateY(-45%);
+  //     background: rgba(0, 0, 0, 0.5);
+  //     color: white;
+  //     font-size: 2rem;
+  //     border: none;
+  //     cursor: pointer;
+  //     padding: 10px 15px;
+  //     border-radius: 5px;
+  //     z-index: 10;
+  //     transition: background 0.3s ease-in-out;
 
-    &:hover {
-      background: rgba(0, 0, 0, 0.7);
-    }
+  //     &:hover {
+  //       background: rgba(0, 0, 0, 0.7);
+  //     }
 
-    &.prev {
-      left: 10px;
-    }
+  //     &.prev {
+  //       left: 10px;
+  //     }
 
-    &.next {
-      right: 10px;
-    }
-  }
+  //     &.next {
+  //       right: 10px;
+  //     }
+  //   }
 
   /* Responsive Design */
   //   @media (max-width: 768px) {

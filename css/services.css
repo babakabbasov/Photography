@@ -5,7 +5,6 @@
   position: relative;
   overflow: hidden;
   /* Service Track (Moving Part of the Carousel) */
-  /* Navigation Buttons */
   /* Responsive Design */
 }
 .services .service-track {
@@ -101,29 +100,6 @@
 .services .service-track .service-cover .service .service-name {
   font-size: 1.2rem;
   margin-top: 10px;
-}
-.services .nav-btn {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-45%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 2rem;
-  border: none;
-  cursor: pointer;
-  padding: 10px 15px;
-  border-radius: 5px;
-  z-index: 10;
-  transition: background 0.3s ease-in-out;
-}
-.services .nav-btn:hover {
-  background: rgba(0, 0, 0, 0.7);
-}
-.services .nav-btn.prev {
-  left: 10px;
-}
-.services .nav-btn.next {
-  right: 10px;
 }
 
 /*# sourceMappingURL=services.css.map */

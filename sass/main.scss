@@ -10,61 +10,39 @@
   @include flex-center;
   font-size: 1.8rem;
   width: 100%;
+  z-index: 10;
+  .left-layer {
+    position: absolute;
+    z-index: 40;
+    top: 0;
+    left: 0;
+    width: 65%;
+    // @media screen and (max-width: 1400px) {
+    //   .left-layer {
+    //     left: -20rem;
+    //     right: 45%;
+    //     top: -10rem;
+    //   }
+    // }
+    img {
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      height: auto;
+      width: auto;
+      max-width: 100%;
+      vertical-align: middle;
+    }
+  }
   // div:not(:first-child) {
   //   max-width: 1330px;
   // }
   .row {
-    margin-top: 10rem;
-  }
-
-  .about {
-    display: flex;
-    justify-content: center; /* Horizontal alignment */
-    width: 100%;
-    // margin: 20rem 0;
-    div {
-      display: flex;
-      position: relative;
-      height: 27.5rem;
-      max-width: 40rem;
-      padding: 2rem;
-      width: 100%;
-      align-items: center; /* Center horizontally */
-      justify-content: center; /* Center vertically */
-      &.name {
-        flex-direction: column;
-      }
-
-      p {
-        color: #333;
-        text-align: center;
-        &.fullname {
-          font-family: "RightmanSignature", Arial, sans-serif;
-          font-size: 7rem;
-          font-weight: 400;
-          line-height: 1;
-        }
-        &.job {
-          text-transform: uppercase;
-          font-size: 1.5rem;
-        }
-        &.slogan {
-          font-size: 2.5rem;
-          font-weight: 500;
-        }
-      }
-    }
-    div:not(:last-child) {
-      border-right: 1px solid #000;
-    }
-  }
-
-  .section-services {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
     width: 100%;
     max-width: 133rem;
+    margin-top: 10rem;
     .title {
       display: flex;
       .left {
@@ -81,73 +59,124 @@
       }
       .right {
         flex: 1;
+      }
+    }
+  }
+
+  .about {
+    .content {
+      display: flex;
+      justify-content: center; /* Horizontal alignment */
+      width: 100%;
+      flex-direction: row;
+      div {
         display: flex;
-        flex-direction: column;
-        .up {
-          text-transform: initial;
-          font-size: 2rem;
-          font-weight: 400;
+        position: relative;
+        height: 27.5rem;
+        max-width: 40rem;
+        padding: 2rem;
+        width: 100%;
+        align-items: center; /* Center horizontally */
+        justify-content: center; /* Center vertically */
+        &.name {
+          flex-direction: column;
         }
-        .down {
-          .nav-container {
-            display: flex;
-            justify-content: flex-end;
-            padding-right: 2rem;
-            gap: 1.2rem;
-            .nav {
-              display: inline-flex;
-              align-items: center;
-              cursor: pointer;
-              position: relative;
-              z-index: 5;
-              div {
-                width: 3rem;
-                height: 4.5rem;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                transition: 0.3s linear;
-                background-size: contain; /* Scale SVG to cover the container */
-                background-repeat: no-repeat; /* Prevent tiling */
-                background-position: center; /* Center the SVG */
-              }
 
-              .left-arrow {
-                background-image: url("../img/nav/left-arrow.svg");
-              }
-              .right-arrow {
-                background-image: url("../img/nav/right-arrow.svg");
-              }
-            }
-            .circle {
-              position: relative;
-              width: 5rem;
-              height: 5rem;
-              border-radius: 100%;
-              display: inline-block;
-              border: 1px dashed #3c3c3c;
-              transform-origin: center; /* Rotate around the center of the circle */
-              z-index: 1;
-            }
-            .circle:hover + .left-arrow {
-              background-image: url("../img/nav/left-arrow-hover.svg");
+        p {
+          color: #333;
+          text-align: center;
+          &.fullname {
+            font-family: "RightmanSignature", Arial, sans-serif;
+            font-size: 7rem;
+            font-weight: 400;
+            line-height: 1;
+          }
+          &.job {
+            text-transform: uppercase;
+            font-size: 1.5rem;
+          }
+          &.slogan {
+            font-size: 2.5rem;
+            font-weight: 500;
+          }
+        }
+      }
+      div:not(:last-child) {
+        border-right: 1px solid #000;
+      }
+    }
+  }
+
+  .section-services {
+    gap: 2rem;
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      .up {
+        text-transform: initial;
+        font-size: 2rem;
+        font-weight: 400;
+      }
+      .down {
+        .nav-container {
+          display: flex;
+          justify-content: flex-end;
+          padding-right: 2rem;
+          gap: 1.2rem;
+          .nav {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            z-index: 5;
+            div {
+              width: 3rem;
+              height: 4.5rem;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              transition: 0.3s linear;
+              background-size: contain; /* Scale SVG to cover the container */
+              background-repeat: no-repeat; /* Prevent tiling */
+              background-position: center; /* Center the SVG */
             }
 
-            .circle:hover + .right-arrow {
-              background-image: url("../img/nav/right-arrow-hover.svg");
+            .left-arrow {
+              background-image: url("../img/nav/left-arrow.svg");
             }
-            .circle:hover {
-              animation: rotateCircle 6s linear infinite;
-              border-color: #b90808;
+            .right-arrow {
+              background-image: url("../img/nav/right-arrow.svg");
             }
-            @keyframes rotateCircle {
-              from {
-                transform: rotate(0deg);
-              }
-              to {
-                transform: rotate(360deg);
-              }
+          }
+          .circle {
+            position: relative;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 100%;
+            display: inline-block;
+            border: 1px dashed #3c3c3c;
+            transform-origin: center; /* Rotate around the center of the circle */
+            z-index: 1;
+          }
+          .circle:hover + .left-arrow {
+            background-image: url("../img/nav/left-arrow-hover.svg");
+          }
+
+          .circle:hover + .right-arrow {
+            background-image: url("../img/nav/right-arrow-hover.svg");
+          }
+          .circle:hover {
+            animation: rotateCircle 6s linear infinite;
+            border-color: #b90808;
+          }
+          @keyframes rotateCircle {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
             }
           }
         }

@@ -7,16 +7,56 @@
   align-items: center;
   font-size: 1.8rem;
   width: 100%;
+  z-index: 10;
+}
+.main .left-layer {
+  position: absolute;
+  z-index: 40;
+  top: 0;
+  left: 0;
+  width: 65%;
+}
+.main .left-layer img {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  vertical-align: middle;
 }
 .main .row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 133rem;
   margin-top: 10rem;
 }
-.main .about {
+.main .row .title {
+  display: flex;
+}
+.main .row .title .left {
+  flex: 1;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.main .row .title .left span {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  text-transform: initial;
+}
+.main .row .title .right {
+  flex: 1;
+}
+.main .about .content {
   display: flex;
   justify-content: center; /* Horizontal alignment */
   width: 100%;
+  flex-direction: row;
 }
-.main .about div {
+.main .about .content div {
   display: flex;
   position: relative;
   height: 27.5rem;
@@ -26,76 +66,56 @@
   align-items: center; /* Center horizontally */
   justify-content: center; /* Center vertically */
 }
-.main .about div.name {
+.main .about .content div.name {
   flex-direction: column;
 }
-.main .about div p {
+.main .about .content div p {
   color: #333;
   text-align: center;
 }
-.main .about div p.fullname {
+.main .about .content div p.fullname {
   font-family: "RightmanSignature", Arial, sans-serif;
   font-size: 7rem;
   font-weight: 400;
   line-height: 1;
 }
-.main .about div p.job {
+.main .about .content div p.job {
   text-transform: uppercase;
   font-size: 1.5rem;
 }
-.main .about div p.slogan {
+.main .about .content div p.slogan {
   font-size: 2.5rem;
   font-weight: 500;
 }
-.main .about div:not(:last-child) {
+.main .about .content div:not(:last-child) {
   border-right: 1px solid #000;
 }
 .main .section-services {
-  display: flex;
-  flex-direction: column;
   gap: 2rem;
-  width: 100%;
-  max-width: 133rem;
 }
-.main .section-services .title {
-  display: flex;
-}
-.main .section-services .title .left {
-  flex: 1;
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-.main .section-services .title .left span {
-  display: block;
-  font-family: "Playfair Display", serif;
-  font-style: italic;
-  text-transform: initial;
-}
-.main .section-services .title .right {
-  flex: 1;
+.main .section-services .right {
   display: flex;
   flex-direction: column;
 }
-.main .section-services .title .right .up {
+.main .section-services .right .up {
   text-transform: initial;
   font-size: 2rem;
   font-weight: 400;
 }
-.main .section-services .title .right .down .nav-container {
+.main .section-services .right .down .nav-container {
   display: flex;
   justify-content: flex-end;
   padding-right: 2rem;
   gap: 1.2rem;
 }
-.main .section-services .title .right .down .nav-container .nav {
+.main .section-services .right .down .nav-container .nav {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
   position: relative;
   z-index: 5;
 }
-.main .section-services .title .right .down .nav-container .nav div {
+.main .section-services .right .down .nav-container .nav div {
   width: 3rem;
   height: 4.5rem;
   position: absolute;
@@ -107,13 +127,13 @@
   background-repeat: no-repeat; /* Prevent tiling */
   background-position: center; /* Center the SVG */
 }
-.main .section-services .title .right .down .nav-container .nav .left-arrow {
+.main .section-services .right .down .nav-container .nav .left-arrow {
   background-image: url("../img/nav/left-arrow.svg");
 }
-.main .section-services .title .right .down .nav-container .nav .right-arrow {
+.main .section-services .right .down .nav-container .nav .right-arrow {
   background-image: url("../img/nav/right-arrow.svg");
 }
-.main .section-services .title .right .down .nav-container .circle {
+.main .section-services .right .down .nav-container .circle {
   position: relative;
   width: 5rem;
   height: 5rem;
@@ -123,13 +143,13 @@
   transform-origin: center; /* Rotate around the center of the circle */
   z-index: 1;
 }
-.main .section-services .title .right .down .nav-container .circle:hover + .left-arrow {
+.main .section-services .right .down .nav-container .circle:hover + .left-arrow {
   background-image: url("../img/nav/left-arrow-hover.svg");
 }
-.main .section-services .title .right .down .nav-container .circle:hover + .right-arrow {
+.main .section-services .right .down .nav-container .circle:hover + .right-arrow {
   background-image: url("../img/nav/right-arrow-hover.svg");
 }
-.main .section-services .title .right .down .nav-container .circle:hover {
+.main .section-services .right .down .nav-container .circle:hover {
   animation: rotateCircle 6s linear infinite;
   border-color: #b90808;
 }

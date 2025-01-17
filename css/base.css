@@ -7,6 +7,8 @@
 /* Set 1rem = 10px */
 html {
   font-size: 62.5%; /* 16px * 62.5% = 10px */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #b90808 #f0f0f0; /* Firefox Thumb and Track */
 }
 html body {
   font-family: "Montserrat, sans-serif";
@@ -17,6 +19,20 @@ html body {
 html body a {
   text-decoration: none;
   color: inherit;
+}
+
+/* Target the scrollbar for the whole page */
+html::-webkit-scrollbar {
+  width: 4px; /* Adjust the width here */
+}
+
+html::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Track background */
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #b90808; /* Thumb (scroll indicator) color */
+  border-radius: 3px; /* Rounded corners */
 }
 
 .container {
